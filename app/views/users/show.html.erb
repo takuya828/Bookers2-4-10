@@ -1,0 +1,10 @@
+<div class="profile-container">
+  <p>User info</p>
+  <p>投稿ユーザー画像：<%= image_tag('no_image.jpg') %></p>
+  <h3 class="profile-name">name: <%= @user.name %></h3>
+  <h3 class="introduction">introduction: <%= @user.introduction %></h3>
+</div>
+
+ <% if @user.id == current_user.id %>
+    <p><%= link_to "プロフィール編集", edit_user_path(@user) %></p>
+  <% end %>
