@@ -1,4 +1,5 @@
 <h1>Editing Book</h1>
+
 <!-- form_with部分 -->
 <%= form_with model:@book, local: true do |f| %>
   <h4>Title</h4>
@@ -7,3 +8,6 @@
   <%= f.text_area :body %>
   <%= f.submit 'Update Book' %>
 <% end %>
+<%= link_to "Show", book_path %>
+
+<a class="edit_14660" href="/books">Back</a>

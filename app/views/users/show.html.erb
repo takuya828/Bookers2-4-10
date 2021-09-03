@@ -1,10 +1,40 @@
-<div class="profile-container">
-  <p>User info</p>
-  <p>投稿ユーザー画像：<%= image_tag('no_image.jpg') %></p>
-  <h3 class="profile-name">name: <%= @user.name %></h3>
-  <h3 class="introduction">introduction: <%= @user.introduction %></h3>
-</div>
+<main>
+  <div class="container px-5 px-sm-0">
+    <div class="row">
+      <div class="col-md-3">
+        <h2>User info</h2>
+        <p><%= attachment_image_tag @user, :profile_image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg" %></p>
+        <table class="table">
+          <p class="profile-name">name: <%= @user.name %></p>
+          <p class="introduction">introduction: <%= @user.introduction %></p>
+           <% if @user.id == current_user.id %>
+            <p><%= link_to "Edit", edit_user_path(@user) %></p>
+           <% end %>
+        </table>
+          <h1>New Book</h1>
+<!-- form_with部分 -->
+<%= form_with model:@book, local:true do |f| %>
 
- <% if @user.id == current_user.id %>
-    <p><%= link_to "プロフィール編集", edit_user_path(@user) %></p>
-  <% end %>
+  <h4>Title</h4>
+  <%= f.text_field :title %>
+
+  <h4>Opinion</h4>
+  <%= f.text_area :body %><br>
+
+  <%= f.submit 'Create book' %>
+<% end %>
+
+
+<% @books.each do |book| %>
+<div>
+  Book 一覧
+  <p><%= attachment_image_tag @user, :profile_image, :fill, 60, 60, format: 'jpeg', fallback: "no_image.jpg" %></p>
+  <%= link_to book.title, book_path(book) %>
+  <p>Opinion：<%= book.body %></p>
+</div>
+<% end %>
+
+      </div>
+    </div>
+  </div>
+  </main>

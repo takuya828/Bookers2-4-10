@@ -3,6 +3,8 @@ Rails.application.routes.draw do
   root to: 'homes#top'
   get 'about' => 'homes#about', as:'about'
   resources :books, only: [:new, :create, :index, :show, :edit, :update, :destroy]
-  resources :users, only: [:show, :edit, :update]
+  resources :users, only: [:show, :edit, :update, :index]
+  post 'users/:id' => 'books#create'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
+

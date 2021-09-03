@@ -1,5 +1,8 @@
+
 <% @books.each do |book| %>
 <div>
+  Book 一覧
+  <p><%= attachment_image_tag @user, :profile_image, :fill, 60, 60, format: 'jpeg', fallback: "no_image.jpg" %></p>
   <%= link_to book.title, book_path(book) %>
   <p>Opinion：<%= book.body %></p>
 </div>
