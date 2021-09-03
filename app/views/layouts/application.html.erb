@@ -27,14 +27,12 @@
           <ul class="navbar-nav ml-auto">
             <li>
            <div class="mx-3">
-            <a class="fas fa-home" href="/" style="color:white;">Home</a>
-            <%= link_to 'Home', user_path(current_user.id), class: 'fas fa-home' %>
+            <a class="fas fa-home" href="/users/<%= current_user.id %>" style="color:white;">Home</a>
            </div>
             </li>
             <li>
              <div class="mx-3">
               <a class="fas fa-users" href="/users" style="color:white;">Users</a>
-               <%= link_to 'Users', users_path, class: 'fas fa-users' %>
              </div>
             </li>
             <li>
@@ -45,7 +43,7 @@
             <li>
              <div class="mx-3">
               <%= link_to "logout", destroy_user_session_path, method: :delete %>
-              <a class="fas fa-sign-in-alt" href="/" method:delete style="color:white;">logout</a>
+              <a class="fas fa-sign-out-alt" href="/" method:delete style="color:white;">logout</a>
              </div>
             </li>
           </ul>
@@ -98,10 +96,12 @@
 
     <%= yield %>
       <footer>
+       <div class="fixed-bottom">
        <div class="container mt-5">
         <div class="row">
          <div class="mx-auto">
           <p>CopyRight Infratop.inc</p>
+          </div>
          </div>
         </div>
        </div>
