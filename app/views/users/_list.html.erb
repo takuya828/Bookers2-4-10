@@ -1,8 +1,15 @@
 <h2>User info</h2>
         <p><%= attachment_image_tag @user, :profile_image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg" %></p>
-        <table class="table">
-          <p class="profile-name">name: <%= @user.name %></p>
-          <p class="introduction">introduction: <%= @user.introduction %></p>
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th scope="col"><p class="profile-name">name　　　<%= @user.name %></p></th>
+            </tr>
+            <tr>
+              <th scope="col"><p class="introduction">introduction　　<%= @user.introduction %></p></th>
+            </tr>
+          </thead>
+          </table>
            <% if @user.id == current_user.id %>
-            <p><%= link_to "Edit", edit_user_path(@user) %></p>
+           <%= link_to "", edit_user_path(@user), class: "btn btn-outline-secondary btn-lg btn-block fas fa-user-cog" %>
            <% end %>

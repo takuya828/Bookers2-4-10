@@ -42,8 +42,8 @@
             </li>
             <li>
              <div class="mx-3">
-              <%= link_to "logout", destroy_user_session_path, method: :delete %>
-              <a class="fas fa-sign-out-alt" href="/" method:delete style="color:white;">logout</a>
+              <div class="font-weight-bold"><a data-method="delete" href="/users/sign_out" rel="nofollow" style="color:white;"><i class="fas fa-sign-out-alt"></i>logout</a></div>
+
              </div>
             </li>
           </ul>
@@ -70,7 +70,7 @@
         </li>
         <li>
          <div class="mx-3">
-          <a class="fas fa-link" href="/about" style="color:white;">About</a>
+          <a class="fas fa-link" href="home/about" style="color:white;">About</a>
          </div>
         </li>
         <li>

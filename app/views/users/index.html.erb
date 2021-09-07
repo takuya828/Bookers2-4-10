@@ -1,8 +1,42 @@
+   <div class="container px-5 px-sm-0">
+    <div class="row">
+      <div class="col-md-3">
 
-<h1>User一覧</h1>
-<% @users.each do |user| %>
-  <p>User name</p>
-  <p><%= attachment_image_tag user, :profile_image, :fill, 60, 60, format: 'jpeg', fallback: "no_image.jpg" %></p>
-  <span><%= link_to user.name, user %></span>
-  <span><%= user.introduction %></span>
+    <%= render 'users/list', users: @users %>
+
+<h1>New book</h1>
+<!-- form_with部分 -->
+<%= form_with model:@book, local:true do |f| %>
+
+  <h4>Title</h4>
+  <%= f.text_field :title %>
+
+  <h4>Opinion</h4>
+  <%= f.text_area :body %><br>
+
+  <%= f.submit 'Create Book', class: "btn btn-success" %>
 <% end %>
+</div>
+
+<div class="col-md-9">
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <h2>Users</h2>
+      <th scope="col">image</th>
+      <th scope="col">name</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <% @users.each do |user| %>
+      <td><%= attachment_image_tag user, :profile_image, :fill, 40, 40, format: 'jpeg', fallback: "no_image.jpg" %></td>
+      <td><%= user.name %></td>
+      <td><%= link_to "Show", user %></td>
+    </tr>
+    <% end %>
+  </tbody>
+ </table>
+</div>
+</div>
+</div>
