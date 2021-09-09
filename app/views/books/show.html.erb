@@ -7,10 +7,10 @@
 <%= form_with model:@new_book, local:true do |f| %>
 
   <h4>Title</h4>
-  <input class="form-control book_title" type="text" name="book[title]" id="book_title">
+  <%= f.text_field :title %>
 
   <h4>Opinion</h4>
-  <textarea class="form-control book_body" name="book[body]" id="book_body"></textarea>
+  <%= f.text_area :body %><br>
 
   <%= f.submit 'Create Book', class: "btn btn-success" %>
 <% end %>
