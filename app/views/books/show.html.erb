@@ -7,15 +7,15 @@
 <%= form_with model:@new_book, local:true do |f| %>
 
   <h4>Title</h4>
-  <%= f.text_field :title %>
+  <input class="form-control book_title" type="text" name="book[title]" id="book_title">
 
   <h4>Opinion</h4>
-  <%= f.text_area :body %><br>
+  <textarea class="form-control book_body" name="book[body]" id="book_body"></textarea>
 
   <%= f.submit 'Create Book', class: "btn btn-success" %>
 <% end %>
 </div>
-   <div class="col-md-8">
+   <div class="col-md-8 offset-md-1">
     <table class="table table-hover">
      <thead>
       <tr>
@@ -24,12 +24,13 @@
      </thead>
     <tbody>
      <tr>
-      <th scope="row"><%= link_to attachment_image_tag(@user, :profile_image, :fill, 60, 60, format: 'jpeg', fallback: "no_image.jpg"), book_path(@book) %></th>
+      <th scope="row"><%= link_to attachment_image_tag(@user, :profile_image, :fill, 60, 60, format: 'jpeg', fallback: "no_image.jpg"), user_path(@book.user) %><br>
+         <%= link_to @user.name, user_path(@book.user) %></th></th>
        <td><%= link_to @book.title, book_path(@book) %></td>
        <td><%= @book.body %></td>
       <% if @user.id == current_user.id %>
       <td><%= link_to("Edit", edit_book_path(@book.id), class: "btn btn-success") %></td>
-      <td> <%= link_to "Destroy", book_path(@book.id), method: :delete, class: 'btn btn-danger', data: {confirm: "削除しますか？"}  %></td>
+      <td> <%= link_to "Destroy", book_path(@book), method: :delete, class: 'btn btn-danger', data: {confirm: "削除しますか？"}  %></td>
       <% end %>
      </tr>
     </tbody>

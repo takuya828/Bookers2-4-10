@@ -15,16 +15,16 @@
 <%= form_with model:@book, local:true do |f| %>
 
   <h4>Title</h4>
-  <%= f.text_field :title %>
+  <input class="form-control book_title" type="text" name="book[title]" id="book_title">
 
   <h4>Opinion</h4>
-  <%= f.text_area :body %><br>
+  <textarea class="form-control book_body" name="book[body]" id="book_body"></textarea>
 
   <%= f.submit 'Create Book', class: "btn btn-success" %>
 <% end %>
 </div>
 
-<div class="col-md-9">
+<div class="col-md-8 offset-md-1">
 <table class="table table-hover">
   <thead>
     <tr>
@@ -37,7 +37,7 @@
   <tbody>
     <tr>
       <% @books.each do |book| %>
-      <td><%= link_to attachment_image_tag(book.user, :profile_image, :fill, 40, 40, format: 'jpeg', fallback: "no_image.jpg"), book_path(book) %></td>
+      <td><%= link_to attachment_image_tag(book.user, :profile_image, :fill, 40, 40, format: 'jpeg', fallback: "no_image.jpg"), user_path(book.user) %></td>
       <td><%= link_to book.title, book_path(book) %></td>
       <td><%= book.body %></td>
     </tr>
